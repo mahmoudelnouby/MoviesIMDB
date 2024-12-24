@@ -1,0 +1,389 @@
+{
+	"info": {
+		"_postman_id": "4d256a65-bcaa-4524-ac0a-e50e2fab0c6b",
+		"name": "MAIDS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25096581"
+	},
+	"item": [
+		{
+			"name": "Security",
+			"item": [
+				{
+					"name": "SignIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" :\"alice_smith\",\r\n    \"password\" :\"mypassword\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FilmsAdminController",
+			"item": [
+				{
+					"name": "getAllRating",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbG5vdWJ5YWRtaW4iLCJpYXQiOjE3MzQ3ODg5ODEsImV4cCI6MTczNDc5MDQyMX0.0jF7YexRevPVJB9flkRBEHg7QxjWbfvpuLdzZp6QwZ8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/admin/films/rating",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"films",
+								"rating"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFilmByTitle",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbG5vdWJ5YWRtaW4iLCJpYXQiOjE3MzQ3ODg5ODEsImV4cCI6MTczNDc5MDQyMX0.0jF7YexRevPVJB9flkRBEHg7QxjWbfvpuLdzZp6QwZ8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "From",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/admin/films/getFilmByTitle?title=Soul Fro: I Know",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"films",
+								"getFilmByTitle"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Soul Fro: I Know"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveFilm",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbG5vdWJ5YWRtaW4iLCJpYXQiOjE3MzQ3ODgyMjIsImV4cCI6MTczNDc4OTY2Mn0.og_PdgOh7mO38cUvZvtuIzoK2POjBp1Wsb4SVyoE1l0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n        {\r\n            \"Title\": \"FRO Thizzle Makes a Beat\",\r\n            \"Year\": \"2022–\",\r\n            \"imdbID\": \"tt22167812\",\r\n            \"Type\": \"series\",\r\n            \"Poster\": \"N/A\"\r\n        },\r\n        {\r\n            \"Title\": \"Lille Frø\",\r\n            \"Year\": \"2020\",\r\n            \"imdbID\": \"tt25051890\",\r\n            \"Type\": \"movie\",\r\n            \"Poster\": \"https://m.media-amazon.com/images/M/MV5BNTdlNDRmNmQtYzRjNS00NWViLWE2MjctNzg3Mjk2NmI2MmJjXkEyXkFqcGdeQXVyODgzMjkwNw@@._V1_SX300.jpg\"\r\n        },\r\n        {\r\n            \"Title\": \"The Fro\",\r\n            \"Year\": \"2011\",\r\n            \"imdbID\": \"tt1954920\",\r\n            \"Type\": \"movie\",\r\n            \"Poster\": \"https://m.media-amazon.com/images/M/MV5BYWNjY2E3OGItZTc2OS00MDM1LTk4NDEtMDIxMDU5MzVhZmUzXkEyXkFqcGdeQXVyNzEyNDcxMw@@._V1_SX300.jpg\"\r\n        },\r\n        {\r\n            \"Title\": \"To & Fro: I Didn't Come Here for the Chicken\",\r\n            \"Year\": \"2012\",\r\n            \"imdbID\": \"tt2845872\",\r\n            \"Type\": \"movie\",\r\n            \"Poster\": \"N/A\"\r\n        },\r\n        {\r\n            \"Title\": \"Fro Yo a Go Go\",\r\n            \"Year\": \"2015\",\r\n            \"imdbID\": \"tt4641284\",\r\n            \"Type\": \"movie\",\r\n            \"Poster\": \"https://m.media-amazon.com/images/M/MV5BMjY3ZGEyYjktMzkyNi00M2ExLWEyNmYtN2ZhYTQ1ZDdhOTMxXkEyXkFqcGdeQXVyMTkzMTg0Mjg@._V1_SX300.jpg\"\r\n        },\r\n        {\r\n            \"Title\": \"Milo: Boy with the Fro\",\r\n            \"Year\": \"2015\",\r\n            \"imdbID\": \"tt4726130\",\r\n            \"Type\": \"movie\",\r\n            \"Poster\": \"N/A\"\r\n        },\r\n        {\r\n            \"Title\": \"Soul Fro: I Know\",\r\n            \"Year\": \"2019\",\r\n            \"imdbID\": \"tt10507502\",\r\n            \"Type\": \"movie\",\r\n            \"Poster\": \"https://m.media-amazon.com/images/M/MV5BZDMxZDhhMWItMGQyNC00MTk5LTkxYzItOWViYzI4YTRhMWViXkEyXkFqcGdeQXVyODIzNzEzMTc@._V1_SX300.jpg\"\r\n        },\r\n        {\r\n            \"Title\": \"Fear the Fro: The Journey\",\r\n            \"Year\": \"2021\",\r\n            \"imdbID\": \"tt12992514\",\r\n            \"Type\": \"movie\",\r\n            \"Poster\": \"N/A\"\r\n        },\r\n        {\r\n            \"Title\": \"Lin: Fra frø til tråd\",\r\n            \"Year\": \"1975\",\r\n            \"imdbID\": \"tt13802068\",\r\n            \"Type\": \"movie\",\r\n            \"Poster\": \"N/A\"\r\n        },\r\n        {\r\n            \"Title\": \"Lin: Fra frø til tekstil\",\r\n            \"Year\": \"1993\",\r\n            \"imdbID\": \"tt13802090\",\r\n            \"Type\": \"movie\",\r\n            \"Poster\": \"N/A\"\r\n        }\r\n    ]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/admin/films/saveFilm",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"films",
+								"saveFilm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteByIMDB",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbG5vdWJ5YWRtaW4iLCJpYXQiOjE3MzQ3OTkwNDksImV4cCI6MTczNDgwMDQ4OX0.1v0PkYsZLTVE6kpLQpz4BCkdyRMRvD0_htQHT6Z-DHk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    \"tt4726130\"\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/admin/films/deleteByTitle",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"films",
+								"deleteByTitle"
+							],
+							"query": [
+								{
+									"key": "imdpid",
+									"value": "tt0076759",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getListOfFilms",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbG5vdWJ5YWRtaW4iLCJpYXQiOjE3MzQ3ODg5ODEsImV4cCI6MTczNDc5MDQyMX0.0jF7YexRevPVJB9flkRBEHg7QxjWbfvpuLdzZp6QwZ8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/admin/films/getAll?title=fro&page=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"films",
+								"getAll"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "fro"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FilmsUserController",
+			"item": [
+				{
+					"name": "findByTitleFromDB",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbG5vdWJ5IiwiaWF0IjoxNzM0Nzg5OTM0LCJleHAiOjE3MzQ3OTEzNzR9.3oowWMQh0VPoMDZPMklplExfVbhwAAoGbSKDE65cFcE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/films?title=from",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"films"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "from"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addRatingForFilm",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/user/films/addRating?imdbId&rating",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"films",
+								"addRating"
+							],
+							"query": [
+								{
+									"key": "imdbId",
+									"value": null
+								},
+								{
+									"key": "rating",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FilmsController",
+			"item": [
+				{
+					"name": "getAllFilms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
