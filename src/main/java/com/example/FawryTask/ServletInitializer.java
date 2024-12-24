@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.WebApplicationInitializer;
 
@@ -28,6 +29,7 @@ import org.springframework.web.WebApplicationInitializer;
 )
 @EntityScan("com.example.FawryTask.*")
 @OpenAPIDefinition(info = @Info(title = "Library APIs", version = "1", description = "Library Management Apis."))
+@EnableAspectJAutoProxy
 public class ServletInitializer extends SpringBootServletInitializer implements
         WebApplicationInitializer {
 

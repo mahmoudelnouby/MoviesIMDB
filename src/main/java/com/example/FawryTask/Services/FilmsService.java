@@ -2,6 +2,7 @@ package com.example.FawryTask.Services;
 
 import com.example.FawryTask.Entities.Films;
 import com.example.FawryTask.Entities.Rating;
+import com.example.FawryTask.LoggingAspect.LoggingAspect;
 import com.example.FawryTask.Model.Response.FilmDto;
 import com.example.FawryTask.Model.Response.SearchResponse;
 import com.example.FawryTask.Repos.FilmsRepo;
@@ -33,6 +34,7 @@ public class FilmsService {
     private String apiKey;
 
     public FilmsService(WebClient.Builder webClientBuilder) {
+
         this.webClient = webClientBuilder.baseUrl("https://www.omdbapi.com").build();
     }
     public Mono<Films> getMovieDetails(String title) {
@@ -60,7 +62,7 @@ public class FilmsService {
     {
         if(StringUtils.isNull(title))
         {
-            throw new RuntimeException("Title Cannot Be Empty!");
+            throw new IllegalArgumentException("Title Cannot Be Empty!");
         }
         List<FilmDto> filmDtos= getMovies(title,page).block().getSearch();
         return filmDtos;
@@ -106,11 +108,11 @@ public class FilmsService {
         {
             if(StringUtils.isNull(imdbid))
             {
-                throw new RuntimeException("IMDB ID is Mandatory!");
+                throw new IllegalArgumentException("IMDB ID is Mandatory!");
             }
             if (!filmsRepo.existsById(imdbid))
             {
-                throw new RuntimeException("Film With This Title Not Found!");
+                throw new IllegalArgumentException("Film With This Title Not Found!");
             }
             try {
                 filmsRepo.deleteById(imdbid);
@@ -128,7 +130,7 @@ public class FilmsService {
     public List<Films> getFilmFromDBByTitle(String title) {
         if(StringUtils.isNull(title))
         {
-            throw new RuntimeException("Cannot Search With Title Empty!");
+            throw new IllegalArgumentException("Cannot Search With Title Empty!");
         }
         return filmsRepo.findByTitleContaining(title);
     }
@@ -136,11 +138,11 @@ public class FilmsService {
     public ResponseEntity<?> addRatingForFilm(String imdbId, Integer rating) {
         if(StringUtils.isNull(imdbId))
         {
-            throw new RuntimeException("Please Choose Film To Add Rating!");
+            throw new IllegalArgumentException("Please Choose Film To Add Rating!");
         }
         if(IntegerUtils.isNull(rating))
         {
-            throw new RuntimeException("Cannot Enter Empty Rating!");
+            throw new IllegalArgumentException("Cannot Enter Empty Rating!");
         }
         Optional<Films> films=filmsRepo.findById(imdbId);
         if(!filmsRepo.existsById(imdbId))

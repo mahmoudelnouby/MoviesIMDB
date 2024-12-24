@@ -2,6 +2,7 @@ package com.example.FawryTask.Controller;
 
 import com.example.FawryTask.Entities.Films;
 import com.example.FawryTask.GlobalEnums.ResponseMessage;
+import com.example.FawryTask.LoggingAspect.LoggingAspect;
 import com.example.FawryTask.Model.Response.FilmDto;
 import com.example.FawryTask.Model.Response.Response;
 import com.example.FawryTask.Services.FilmsService;
@@ -22,6 +23,7 @@ public class FilmsAdminController {
     @Autowired
     private FilmsService filmsService;
 
+
     @GetMapping("/getAll")
     public ResponseEntity<?> getAllFilmsIMDB(@RequestParam String title,@RequestParam(defaultValue = "1") Integer page)
     {
@@ -33,6 +35,7 @@ public class FilmsAdminController {
                 ResponseMessage.Succesful_Request.getMessage(),
                 ResponseMessage.Developer_Message.getMessageByApi("getAll"),
                 filmsService.getListOfFilms(title,page)));
+
     }
 
     @GetMapping("/getFilmByTitle")
