@@ -2,6 +2,7 @@ package com.example.FawryTask.Services;
 
 import com.example.FawryTask.Entities.Films;
 import com.example.FawryTask.Entities.Rating;
+import com.example.FawryTask.GlobalEnums.Type;
 import com.example.FawryTask.LoggingAspect.LoggingAspect;
 import com.example.FawryTask.Model.Request.FilmReqDto;
 import com.example.FawryTask.Model.Response.FilmDto;
