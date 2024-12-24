@@ -30,8 +30,8 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable).cors().and()
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/h2-console/**","/api/v1/auth/**","/swagger-ui/**",
-                                "/swagger-ui/index.html#/**","h2-console","**.do")
+                .requestMatchers("/h2-console/**","/api/v1/auth/**","/swagger-ui/**",
+                        "/swagger-ui/index.html#/**","h2-console","**.do","v3/api-docs/**")
                         .permitAll()
                         .requestMatchers("/api/admin/films/**").hasAuthority("ADMIN")
                         .requestMatchers("/api/user/films/**").hasAnyAuthority("ADMIN","USER")
