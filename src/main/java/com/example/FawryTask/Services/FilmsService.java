@@ -3,16 +3,19 @@ package com.example.FawryTask.Services;
 import com.example.FawryTask.Entities.Films;
 import com.example.FawryTask.Entities.Rating;
 import com.example.FawryTask.LoggingAspect.LoggingAspect;
+import com.example.FawryTask.Model.Request.FilmReqDto;
 import com.example.FawryTask.Model.Response.FilmDto;
 import com.example.FawryTask.Model.Response.SearchResponse;
 import com.example.FawryTask.Repos.FilmsRepo;
 import com.example.FawryTask.Repos.RatingRepo;
+import com.example.FawryTask.Specs.FilmsSpecs;
 import com.example.FawryTask.Utils.IntegerUtils;
 import com.example.FawryTask.Utils.StringUtils;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -154,5 +157,10 @@ public class FilmsService {
                 value(String.valueOf(rating)).
                 source("FawryTask").build());
         return ResponseEntity.ok("Rating Added Successfully");
+    }
+
+    public Page<Films> getFilmWithSpecs(FilmReqDto filmReqDto,Pageable pageable) {
+        Specification<Films> filmsSpecification= FilmsSpecs.withFilter(filmReqDto.getImdbId(), filmReqDto.getTitle(), filmReqDto.getYear(), filmReqDto.getType());
+        return filmsRepo.findAll(filmsSpecification,pageable);
     }
 }

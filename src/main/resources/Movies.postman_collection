@@ -295,6 +295,57 @@
 					"response": []
 				},
 				{
+					"name": "searchWithSpecs",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbG5vdWJ5YWRtaW4iLCJpYXQiOjE3MzUwNTEyMTEsImV4cCI6MTczNTA1MjY1MX0.wMRBZudyJ0XfTQyOoc-RCfSqiF9alLsWr0c8J5UmDVI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Title\": \"\",\r\n    \"Year\": \"\",\r\n    \"imdbID\": \"tt12992514\",\r\n    \"Type\": \"\",\r\n    \"pageNumber\": 0,\r\n    \"pageSize\" : 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/films/searchWithSpecs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"films",
+								"searchWithSpecs"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "from",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "addRatingForFilm",
 					"request": {
 						"method": "GET",
